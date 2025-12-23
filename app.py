@@ -17,7 +17,6 @@ PATIENT_RESOURCES = [
     "Observation", "Procedure", "Provenance", "QuestionnaireResponse",
     "RelatedPerson", "ServiceRequest"
 ]
-
 # List of resources to search without Patient ID (System level)
 SYSTEM_RESOURCES = [
     "Location", "Medication", "Organization", "Practitioner", "PractitionerRole"
@@ -31,7 +30,7 @@ HTML_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple health</title>
+    <title>Apple Health</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { padding: 20px; background-color: #f8f9fa; }
@@ -84,7 +83,7 @@ HTML_TEMPLATE = """
                 <span><strong>Connected!</strong> Patient ID: <code>{{ patient_id }}</code></span>
                 <a href="/logout" class="btn btn-sm btn-outline-danger">Reset / Logout</a>
             </div>
-            <button onclick="runTests()" id="runBtn" class="btn btn-success w-100">Access FHIR data</button>
+            <button onclick="runTests()" id="runBtn" class="btn btn-success w-100">Run Whitebox Tests</button>
         </div>
     </div>
 
@@ -303,7 +302,7 @@ def make_fhir_request(method, url, params=None):
             else:
                 pass
 
-        return {"status": resp.status_code, "body": resp.text[:500]}
+        return {"status": resp.status_code, "body": resp.text}
         
     except Exception as e:
         return {"status": 0, "body": str(e)}
